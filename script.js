@@ -163,6 +163,7 @@ btnLogin.addEventListener('click', function (e) {
   }
 });
 
+//AMOUNT TRANSFER BUTTON
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = Number(inputTransferAmount.value);
@@ -186,6 +187,23 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+//LOAN BUTTON
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    //ADD MOVEMENTS
+    currentAccount.movements.push(amount);
+
+    //updateui
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
+//ACCOUNT CLOSING BUTTON
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -201,7 +219,7 @@ btnClose.addEventListener('click', function (e) {
 
     containerApp.style.opacity = 0;
   }
-  inputTransferAmount.value = inputTransferTo.value = '';
+  inputTransferAmount.value = inputTransferTo.value = ' ';
 });
 
 /////////////////////////////////////////////////
