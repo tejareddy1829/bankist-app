@@ -222,6 +222,15 @@ btnClose.addEventListener('click', function (e) {
   inputTransferAmount.value = inputTransferTo.value = ' ';
 });
 
+//SORT BUTTON
+
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault;
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
